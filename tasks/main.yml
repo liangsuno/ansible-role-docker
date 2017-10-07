@@ -1,0 +1,17 @@
+---
+- include_role:
+    name: geerlingguy.docker
+
+- name: install epel-release
+  yum:
+    name: epel-release
+    state: latest
+
+- name: install python-pip
+  yum:
+    name: python-pip
+    state: latest
+
+- name: install docker-py
+  shell: pip install docker-py
+  become: true
