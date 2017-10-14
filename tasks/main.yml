@@ -9,5 +9,6 @@
   when: ansible_os_family == 'Debian'
 
 - name: install docker-py
-  shell: pip install docker-py
+  pip:
+    name: docker-py
   become: true
