@@ -2,15 +2,11 @@
 - include_role:
     name: geerlingguy.docker
 
-- name: install epel-release
-  yum:
-    name: epel-release
-    state: latest
+- include_tasks: setup-RedHat.yml
+  when: ansible_os_family == 'RedHat'
 
-- name: install python-pip
-  yum:
-    name: python-pip
-    state: latest
+- include_tasks: setup-Ubuntu.yml
+  when: ansible_os_family == 'Ubuntu'
 
 - name: install docker-py
   shell: pip install docker-py
