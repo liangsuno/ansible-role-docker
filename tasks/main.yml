@@ -8,7 +8,13 @@
 - include_tasks: setup-Debian.yml
   when: ansible_os_family == 'Debian'
 
-- name: install docker-py
+- name: upgrade pip
+  pip: 
+    name: pip
+    state: latest
+  become: true
+
+- name: install docker
   pip:
-    name: docker-py
+    name: docker
   become: true
